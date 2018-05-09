@@ -11,5 +11,6 @@
     body_format: "{{ ansible_tower_config.format }}"
   register: reg_tower_facts_instance_groups
 
-- set_fact:
+- name: "facts.instance_groups: Recording content in ansible_tower_facts['instance_groups']"
+  set_fact:
     ansible_tower_facts: "{{ ansible_tower_facts | combine({ 'instance_groups': reg_tower_facts_instance_groups.json.results }) }}"

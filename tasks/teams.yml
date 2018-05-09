@@ -11,5 +11,6 @@
     body_format: "{{ ansible_tower_config.format }}"
   register: reg_tower_facts_teams
 
-- set_fact:
+- name: "facts.teams: Recording content in ansible_tower_facts['teams']"
+  set_fact:
     ansible_tower_facts: "{{ ansible_tower_facts | combine({ 'teams': reg_tower_facts_teams.json.results }) }}"
