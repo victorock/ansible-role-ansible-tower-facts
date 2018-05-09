@@ -1,0 +1,15 @@
+- name: "facts.instances: Gather instances"
+  uri:
+    url: "https://{{ ansible_tower_config.host }}/api/v2/instances/"
+    user: "{{ ansible_tower_config.username }}"
+    password: "{{ ansible_tower_config.password }}"
+    validate_certs: "{{ ansible_tower_config.verify_ssl|bool }}"
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+    method: GET
+    body_format: "{{ ansible_tower_config.format }}"
+  register: reg_tower_facts_instances
+
+- set_fact:
+    ansible_tower_facts: "{{ ansible_tower_facts | combine({ 'instances': reg_tower_facts_instances.json.results }) }}"

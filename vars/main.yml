@@ -1,0 +1,6 @@
+__ansible_tower_facts:
+  users: []
+  credentials: []
+  projects: []
+  job_templates: []
+  inventories: []
