@@ -1,6 +1,12 @@
 __ansible_tower_facts:
+  organizations: []
   users: []
+  teams: []
   credentials: []
   projects: []
   job_templates: []
   inventories: []
+  instances: []
+  instance_groups: []
+  settings: {}
+  config: {}
