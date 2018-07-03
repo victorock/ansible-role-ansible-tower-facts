@@ -23,4 +23,4 @@
     - role: geerlingguy.pip
     - role: geerlingguy.nodejs
     - role: geerlingguy.awx
-    - role: test
+    - role: role_under_test
