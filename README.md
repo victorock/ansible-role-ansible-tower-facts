@@ -1,7 +1,12 @@
-Ansible Tower Setup
+Ansible Tower Facts
 =========
 
-Simple Role to Gather Facts from Ansible Tower by Red Hat.
+Simple Role to Gather Facts from Ansible Tower by Red Hat through REST.
+
+Dependencies
+------------
+
+None
 
 Requirements
 ------------
@@ -26,7 +31,18 @@ Example Playbook
   hosts: tower
 
   roles:
-    - victorock.ansible-tower-facts
+    - role: victorock.tower_facts
+      autorun: yes
+      tower_config:
+        host: "localhost"
+        username: "admin"
+        password: "password"
+        verify_ssl: false
+        format: json
+
+  tasks:
+    - debug: var=tower_facts
+
 ```
 
 License
