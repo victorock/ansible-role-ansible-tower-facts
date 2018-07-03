@@ -1,3 +1,0 @@
-- name: "facts: Merge Defaults"
-  set_fact:
-    ansible_tower_facts: "{{ __ansible_tower_facts | combine( ansible_tower_facts ) }}"

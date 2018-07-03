@@ -1,16 +1,16 @@
 - name: "facts.organizations: Gather organizations"
   uri:
-    url: "https://{{ ansible_tower_config.host }}/api/v2/organizations/"
-    user: "{{ ansible_tower_config.username }}"
-    password: "{{ ansible_tower_config.password }}"
-    validate_certs: "{{ ansible_tower_config.verify_ssl|bool }}"
+    url: "https://{{ tower_config.host }}/api/v2/organizations/"
+    user: "{{ tower_config.username }}"
+    password: "{{ tower_config.password }}"
+    validate_certs: "{{ tower_config.verify_ssl|bool }}"
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
     method: GET
-    body_format: "{{ ansible_tower_config.format }}"
+    body_format: "{{ tower_config.format }}"
   register: reg_tower_facts_organizations
 
-- name: "facts.organizations: Recording content in ansible_tower_facts['organizations']"
+- name: "facts.organizations: Recording content in tower_facts['organizations']"
   set_fact:
-    ansible_tower_facts: "{{ ansible_tower_facts | combine({ 'organizations': reg_tower_facts_organizations.json.results }) }}"
+    tower_facts: "{{ tower_facts | combine({ 'organizations': reg_tower_facts_organizations.json.results }) }}"

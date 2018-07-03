@@ -1,0 +1,26 @@
+---
+- hosts: all
+  gather_facts: yes
+
+  vars:
+    autorun: true
+    nodejs_version: "6.x"
+    pip_install_packages:
+      - name: docker-py
+    tower_config:
+      host: "localhost"
+      username: "admin"
+      password: "password"
+      verify_ssl: false
+      format: json
+
+  roles:
+    - role: geerlingguy.repo-epel
+      when: ansible_os_family == "RedHat"
+    - role: geerlingguy.git
+    - role: geerlingguy.ansible
+    - role: geerlingguy.docker
+    - role: geerlingguy.pip
+    - role: geerlingguy.nodejs
+    - role: geerlingguy.awx
+    - role: test
